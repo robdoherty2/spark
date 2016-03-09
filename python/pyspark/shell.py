@@ -38,11 +38,12 @@ if os.environ.get("SPARK_EXECUTOR_URI"):
 sc = SparkContext()
 atexit.register(lambda: sc.stop())
 
-try:
+#try:
     # Try to access HiveConf, it will raise exception if Hive is not added
-    sc._jvm.org.apache.hadoop.hive.conf.HiveConf()
-    sqlContext = HiveContext(sc)
-except py4j.protocol.Py4JError:
+#    sc._jvm.org.apache.hadoop.hive.conf.HiveConf()
+#    sqlContext = HiveContext(sc)
+#except py4j.protocol.Py4JError:
+try:
     sqlContext = SQLContext(sc)
 except TypeError:
     sqlContext = SQLContext(sc)
